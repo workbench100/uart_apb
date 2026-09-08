@@ -18,10 +18,10 @@ class uart_coverage extends uvm_subscriber #(uart_item);
     cp_frame_error: coverpoint (sample_item.observed_frame_error ||
                                 sample_item.inject_bad_stop);
     cp_bit_cycles: coverpoint sample_item.bit_cycles {
-      bins minimum = {2};
-      bins small   = {[3:8]};
-      bins medium  = {[9:32]};
-      bins large   = {[33:65535]};
+      bins minimum    = {2};
+      bins low_range  = {[3:8]};
+      bins mid_range  = {[9:32]};
+      bins high_range = {[33:65535]};
     }
     cx_data_error: cross cp_data, cp_frame_error;
   endgroup
